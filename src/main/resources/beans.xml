@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd"
+    >
+    <bean id="testBean" class="com.study.bean.TestBean">
+        <property name="name" value="abc"/>
+    </bean>
+    <bean id="aopBean" class="com.study.bean.AOPBean"/>
+    <bean id="aopBeanAspect" class="com.study.bean.AOPBeanAspect"/>
+    <aop:aspectj-autoproxy/>
+    <bean id="a" class="com.study.bean.A" scope="prototype">
+        <property name="b" ref="b"/>
+    </bean>
+    <bean id="b" class="com.study.bean.B">
+        <property name="a" ref="a"/>
+    </bean>
+</beans>
